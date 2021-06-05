@@ -56,10 +56,7 @@ def main():
             lst.append(random.randint(1,10000))
         return lst
 
-    # test_numbers = [2, 9,5,6,7,7,8,8,4,9,9,9,9,9,9,9,9,9,9,9,9,9]
     numbers = generateRandomNumbersList(10000)
-    #print("Test numbers:", test_numbers)
-    #print("Test numbers:", numbers)
     start_time = time.time()
     print("Result:",maxPairwiseProduct(numbers))
     end_time = time.time()
