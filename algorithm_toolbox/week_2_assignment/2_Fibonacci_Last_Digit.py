@@ -16,9 +16,19 @@ def main():
 
         return current % 10
 
+    def efficient_fib_last_digit(n):
+        """ 
+        Read up Pisano Period
+        for modulo 10, the last digits repeats itself in cycles of 60
+        """
+        n = n % 60
+        output = naive_fib_last_digit(n-1) + naive_fib_last_digit(n-2)
+        return output % 10
+
     user_input = int(input("Enter fib number: "))
-    answer = naive_fib_last_digit(user_input)
-    print(answer)
+    efficient_answer = efficient_fib_last_digit(user_input)
+    print(efficient_answer)
+
 
 if __name__ == "__main__":
     main()
