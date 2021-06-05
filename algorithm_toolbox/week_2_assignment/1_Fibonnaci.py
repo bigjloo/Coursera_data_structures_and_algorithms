@@ -13,7 +13,11 @@ def main():
 
     def fastFibonacci(n, memo={}):
         """ more efficient fibonacci algorithm using memoization """
-        if n == 0 or n == 1:
+        if n == 0:
+            memo[n] = 0
+            return memo[n]
+
+        if n == 1:
             memo[n] = 1
             return memo[n]
         try:
