@@ -5,3 +5,5 @@
   - Sum of two digits
   - Maximum Pairwise Product
 - Week 2: Algorithmic Warm-up
+  - Efficient Fibonacci with memoization
+  - Efficient last digit of Fibonacci algo
