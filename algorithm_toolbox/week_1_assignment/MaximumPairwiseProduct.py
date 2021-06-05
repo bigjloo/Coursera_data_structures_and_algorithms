@@ -31,6 +31,7 @@ def main():
                     max = numbers[i] * numbers[j]
         return max
     
+    
     def fastMaxPairwiseProduct(numbers: list) -> int:
         """
         more efficient algo which just takes the largest two numbers and multiple O(2n)
@@ -40,6 +41,13 @@ def main():
         second_largest_number = max(numbers)
         return largest_number * second_largest_number
 
+
+    def evenFasterMaxPairwiseProduct(numbers: list)-> int:
+        """
+        sort list then return sorted_numbers[0] * sorted_numbers[1]
+        """
+        sorted_numbers = sorted(numbers, reverse=True)
+        return sorted_numbers[0] * sorted_numbers[1]
 
     
     def generateRandomNumbersList(numbers_count: int)-> list:
