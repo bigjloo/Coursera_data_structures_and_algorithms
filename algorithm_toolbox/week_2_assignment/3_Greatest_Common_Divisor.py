@@ -1,6 +1,6 @@
-# Greatest common divisor
+# Greatest common divisor - Eulcids algo
 # @author: Junzhong Loo
-# Date: 5/6/2021    
+# Date: 6/6/2021    
 
 def main():
     def efficient_GCD(a, b):
