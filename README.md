@@ -2,14 +2,17 @@
 
 ## Algorithmic Toolbox
 - Week 1: Programming Challenges
-  - Sum of two digits
-  - Maximum Pairwise Product
 - Week 2: Algorithmic Warm-up
-  - Efficient Fibonacci with memoization
-  - Efficient last digit of Fibonacci algo
+  - Fibonnacci
+  - Big O
   - Greatest Common Divisor
-  - Least Common Multiply
-  - Pisano Period
-  - Last digit of sum of Fibonacci
-  - Last Digit of Sum of Partial Fibonacci
-  - Last Digit of Sum of Square Fibonacci
+- Week 3: Greedy Algorithms 
+  - Knapsack Problem
+- Week 4: Divide and Conquer 
+  - Binary search
+  - Mergesort, Quicksort
+
+## Data Structures
+- Week 1: Basic Data Structures
+  - Arrays, Single Linked List, Doubly Linked List, Stacks, Queues, Trees
+- Week 2: Dynamic Arrays and Amortized Analysis
