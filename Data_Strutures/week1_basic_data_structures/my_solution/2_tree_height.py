@@ -27,45 +27,36 @@ from queue import Queue
 
 def compute_height(n, parents):
     tree = {}
-    root = None
+    root = parents.index(-1)
     for i in range(n):
-        if parents[i] == -1:
-            root = i
-            continue
         try:
             tree[parents[i]].append(i)
         except KeyError:
             tree[parents[i]] = [i]
-    print(root)
-    print(tree)
     q = Queue()
     q.put(root)
     level = 0
-    # while not q.empty():
-    #     vertex = q.get_nowait()
-    #     try:
-    #         children = tree[vertex]
-    #         level += 1
-    #         for child_node in children:
-    #             q.put(child_node)
-    #     except KeyError:
-    #         continue
-
-    def bfs(tree, level):
-        if tree == None:
-            return level
+    while not q.empty():
         level += 1
-        max_level = max(bfs(node, level) for node in tree)
-        return max_level
+        node_left_in_q = q.qsize()
+        while node_left_in_q > 0:
+            node_left_in_q -= 1
+            current_node = q.get_nowait()
+            try:
+                children = tree[current_node]
+                for child_node in children:
+                    q.put(child_node)
+            except KeyError:
+                continue
 
-    return bfs(tree, level)
+    return level
 
 
 def main():
-    # n = int(input())
-    # parents = list(map(int, input().split()))
-    n = 100
-    parents = list(map(int, "96 61 95 34 12 26 48 42 69 74 90 67 8 53 65 0 14 47 88 8 49 4 93 75 6 29 -1 62 87 12 42 52 1 46 4 83 14 75 72 95 15 86 29 53 85 78 65 31 5 96 6 74 87 24 15 90 22 85 20 46 78 97 50 97 69 19 21 61 92 5 22 47 63 1 93 28 20 34 52 21 72 88 67 0 86 49 63 48 28 25 50 83 31 19 62 24 64 64 92 25".split()))
+    n = int(input())
+    parents = list(map(int, input().split()))
+    # n = 100
+    # parents = list(map(int, "50 73 65 90 58 60 80 94 -1 38 15 23 42 73 56 8 61 9 30 86 45 30 57 8 45 66 69 80 22 66 53 2 48 22 86 30 44 8 60 98 82 24 91 21 8 65 77 77 62 54 26 47 46 75 29 15 67 23 54 81 28 86 66 18 72 60 8 18 92 48 9 15 76 8 81 57 48 76 7 71 28 23 29 30 57 76 29 89 66 2 30 7 44 27 37 29 57 6 66 36".split()))
     print(compute_height(n, parents))
 
 
