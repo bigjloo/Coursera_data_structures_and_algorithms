@@ -1,84 +1,71 @@
 # python3
-
-import queue
 import sys
 import threading
 from queue import Queue
 
-class Node:
-    def __init__(self, parent=None):
-            self.parent = parent
-            self.children = []
 
-    def __str__(self):
-        return "parent: {}, children: {}".format(self.parent, self.children)
+# class Node:
+#     def __init__(self, parent=None):
+#         self.parent = parent
+#         self.children = []
 
-    def add_child(self, node):
-        self.children.append(node)
-    
-    def number_of_children(self):
-        return len(self.children)
-        
+#     def __str__(self):
+#         return "parent: {}, children: {}".format(self.parent, self.children)
+
+#     def add_child(self, node):
+#         self.children.append(node)
+
+#     def number_of_children(self):
+#         return len(self.children)
+
+#     def add_parent(self, parent):
+#         self.parent = parent
+
+#     def __repr__(self):
+#         return f"Node(parent: {self.parent}, children: {self.children}"
+
 
 def compute_height(n, parents):
-    # Replace this code with a faster implementation
-    # max_height = 0
-    # for vertex in range(n):
-    #     height = 0
-    #     current = vertex
-    #     while current != -1:
-    #         height += 1
-    #         current = parents[current]
-    #     max_height = max(max_height, height)
-    # return max_height
-    nodes = []
-    for _ in range(n):
-        nodes.append(Node())
+    tree = {}
+    root = None
     for i in range(n):
         if parents[i] == -1:
-            root = nodes[i]
-        else:
-            nodes[parents[i]].add_child(nodes[i])
-    
-    # traverse down tree until no more children
-    # +1 for height every step down
-    # n -= len(children)
-    # if children = 0 and n == 0: return height
-    # elif children != 0
-    # traverse again
-    
-    # edge case: no children for root
+            root = i
+            continue
+        try:
+            tree[parents[i]].append(i)
+        except KeyError:
+            tree[parents[i]] = [i]
+    print(root)
+    print(tree)
+    q = Queue()
+    q.put(root)
+    level = 0
+    # while not q.empty():
+    #     vertex = q.get_nowait()
+    #     try:
+    #         children = tree[vertex]
+    #         level += 1
+    #         for child_node in children:
+    #             q.put(child_node)
+    #     except KeyError:
+    #         continue
 
-    # height = 0
-    # def traverse(node, height, n):
-    #     # no children. all nodes explored
-    #     if len(node.children) == 0:
-    #         pass
-    #     if n == 0:
-    #         return height
-    #     # theres children
-    #     height += 1
-    #     n -= node.number_of_children()
-    #     for node in node.children:
-    #         traverse(node, height, n)
-    
-    # height = traverse(root, height, n - 1)
-    # return height
+    def bfs(tree, level):
+        if tree == None:
+            return level
+        level += 1
+        max_level = max(bfs(node, level) for node in tree)
+        return max_level
 
-    queue = Queue()
-    unexplored_node = n
-    def get_height(node, height):
-        queue.put(node)
-        
-
-
+    return bfs(tree, level)
 
 
 def main():
     # n = int(input())
     # parents = list(map(int, input().split()))
-    n = 5
-    parents = list(map(int, "4 -1 4 1 1".split()))
+    n = 100
+    parents = list(map(int, "96 61 95 34 12 26 48 42 69 74 90 67 8 53 65 0 14 47 88 8 49 4 93 75 6 29 -1 62 87 12 42 52 1 46 4 83 14 75 72 95 15 86 29 53 85 78 65 31 5 96 6 74 87 24 15 90 22 85 20 46 78 97 50 97 69 19 21 61 92 5 22 47 63 1 93 28 20 34 52 21 72 88 67 0 86 49 63 48 28 25 50 83 31 19 62 24 64 64 92 25".split()))
     print(compute_height(n, parents))
 
 
