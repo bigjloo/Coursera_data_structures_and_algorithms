@@ -1,28 +1,8 @@
+#  Author: Junzhong Loo
 # python3
 import sys
 import threading
 from queue import Queue
-
-
-# class Node:
-#     def __init__(self, parent=None):
-#         self.parent = parent
-#         self.children = []
-
-#     def __str__(self):
-#         return "parent: {}, children: {}".format(self.parent, self.children)
-
-#     def add_child(self, node):
-#         self.children.append(node)
-
-#     def number_of_children(self):
-#         return len(self.children)
-
-#     def add_parent(self, parent):
-#         self.parent = parent
-
-#     def __repr__(self):
-#         return f"Node(parent: {self.parent}, children: {self.children}"
 
 
 def compute_height(n, parents):
@@ -66,3 +46,7 @@ def main():
 sys.setrecursionlimit(10**7)  # max depth of recursion
 threading.stack_size(2**27)   # new thread will get stack of such size
 threading.Thread(target=main).start()
+
+# sys.modules[__name__] = compute_height
+
+# def test():
