@@ -71,27 +71,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-
-
-""" 
-sample 4
-buffer size | n_requests
-1               2
-arrived at | time to process        was_dropped | started at
-0               1                       False       0
-1               1                       False       1
-
-
-1) pop from front of finish_time the packets that are already processed
-by time of arrive of new packet
-    finish_time[0] - 1
-    if finish_time[0] === 0
-        finish_time.pop(0)
-2) add the finish time for the new packet to the finish time
-
-3) if buffer is full, drop packet, else add time to process to finish time
-    if finish_time.length == self.size
-        return Response(True, -1)
-    else:
-        finish_time.append(response.time_to_process)
-"""
